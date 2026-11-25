@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J.S — JANSHAI Official Online Store India</title>
+  <meta name="description" content="JANSHAI (J.S) — Contemporary Indian Streetwear, Athleisure & Everyday Essentials. Shop Men, Women, and Limited Drops." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-white: #ffffff;
+      --bg-light: #f5f5f5;
+      --bg-card: #f6f6f6;
+      --text-primary: #111111;
+      --text-secondary: #707072;
+      --border-light: #e5e5e5;
+      --accent-red: #d33918;
+      --accent-green: #128a09;
+      --radius-pill: 9999px;
+      --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-white);
+      color: var(--text-primary);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* Utility Top Bar */
+    .top-bar {
+      background-color: var(--bg-light);
+      height: 36px;
+      padding: 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .top-bar-right a:hover {
+      color: var(--text-secondary);
+    }
+
+    .top-bar-divider {
+      color: var(--text-primary);
+      opacity: 0.4;
+    }
+
+    /* Main Sticky Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: var(--bg-white);
+      height: 64px;
+      padding: 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition);
+    }
+
+    .navbar.scrolled {
+      border-bottom-color: var(--border-light);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 32px;
+      background: var(--text-primary);
+      color: var(--bg-white);
+      font-family: 'Anton', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      border-radius: 4px;
+    }
+
+    .brand-logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      padding: 20px 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      border-bottom-color: var(--text-primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      width: 180px;
+      height: 38px;
+      background: var(--bg-light);
+      border: 1px solid transparent;
+      border-radius: var(--radius-pill);
+      padding: 0 16px 0 38px;
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+      transition: width var(--transition), background var(--transition);
+    }
+
+    .search-box input:focus {
+      width: 230px;
+      background: #ebebeb;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 12px;
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+    }
+
+    .search-dropdown {
+      position: absolute;
+      top: 46px;
+      right: 0;
+      width: 320px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      display: none;
+      max-height: 360px;
+      overflow-y: auto;
+      z-index: 950;
+    }
+
+    .search-dropdown.open {
+      display: block;
+    }
+
+    .search-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .search-item:hover {
+      background: var(--bg-light);
+    }
+
+    .search-item img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .icon-btn {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-light);
+    }
+
+    .badge-count {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      min-width: 17px;
+      height: 17px;
+      padding: 0 4px;
+      background: var(--text-primary);
+      color: var(--bg-white);
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-count.hidden {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    /* Promo Banner Strip */
+    .promo-strip {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .promo-strip strong {
+      font-weight: 600;
+    }
+
+    .promo-strip button {
+      text-decoration: underline;
+      font-weight: 600;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+
+    /* Hero Carousel */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 78vh;
+      min-height: 500px;
+      max-height: 760px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s ease;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      filter: brightness(0.76);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0.1) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding: 64px 24px 72px;
+      color: var(--bg-white);
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      opacity: 0.92;
+    }
+
+    .hero-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(44px, 7.5vw, 88px);
+      line-height: 0.96;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      max-width: 560px;
+      margin-bottom: 24px;
+      opacity: 0.95;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 26px;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 600;
+      transition: transform 0.15s ease, opacity var(--transition), background var(--transition);
+    }
+
+    .btn-pill:active {
+      transform: scale(0.97);
+    }
+
+    .btn-white {
+      background: var(--bg-white);
+      color: var(--text-primary);
+    }
+
+    .btn-white:hover {
+      background: #e6e6e6;
+    }
+
+    .btn-dark {
+      background: var(--text-primary);
+      color: var(--bg-white);
+    }
+
+    .btn-dark:hover {
+      background: #333333;
+    }
+
+    .btn-outline-white {
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      color: var(--bg-white);
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .hero-controls {
+      position: absolute;
+      bottom: 22px;
+      right: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 20;
+    }
+
+    .hero-ctrl-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: background var(--transition);
+    }
+
+    .hero-ctrl-btn:hover {
+      background: var(--bg-white);
+    }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 20;
+    }
+
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      transition: all var(--transition);
+    }
+
+    .hero-dot.active {
+      width: 26px;
+      border-radius: 99px;
+      background: var(--bg-white);
+    }
+
+    /* Section Containers */
+    .section {
+      padding: 56px 36px 24px;
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .carousel-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .circle-arrow {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: background var(--transition);
+    }
+
+    .circle-arrow:hover {
+      background: #e2e2e2;
+    }
+
+    /* 2x2 Editorial Featured Grid */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .editorial-card {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      background: #1a1a1a;
+      cursor: pointer;
+    }
+
+    .editorial-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .editorial-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .editorial-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.05) 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px;
+      color: var(--bg-white);
+    }
+
+    .editorial-tag {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      opacity: 0.92;
+    }
+
+    .editorial-heading {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    /* Horizontal Trending & Style Carousels */
+    .h-scroll {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding-bottom: 10px;
+    }
+
+    .h-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .trending-card {
+      flex: 0 0 360px;
+      scroll-snap-align: start;
+      cursor: pointer;
+    }
+
+    .trending-img-wrap {
+      width: 100%;
+      height: 440px;
+      overflow: hidden;
+      background: var(--bg-card);
+      margin-bottom: 12px;
+    }
+
+    .trending-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .trending-card:hover .trending-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .trending-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .trending-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* Filter Pills */
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-light);
+      font-size: 14px;
+      font-weight: 500;
+      background: var(--bg-white);
+      color: var(--text-primary);
+      transition: all var(--transition);
+    }
+
+    .filter-pill:hover {
+      border-color: var(--text-primary);
+    }
+
+    .filter-pill.active {
+      background: var(--text-primary);
+      color: var(--bg-white);
+      border-color: var(--text-primary);
+    }
+
+    /* Shoppable Product Catalog Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .product-img-box {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: var(--bg-card);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .product-card:hover .product-img-box img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--bg-white);
+      color: var(--text-primary);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .product-badge.sale {
+      background: var(--accent-red);
+      color: var(--bg-white);
+    }
+
+    .fav-toggle {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: transform 0.2s ease;
+    }
+
+    .fav-toggle:hover {
+      transform: scale(1.08);
+    }
+
+    .fav-toggle.saved svg {
+      fill: var(--accent-red);
+      stroke: var(--accent-red);
+    }
+
+    .product-rating {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .product-rating span {
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .product-name {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 2px;
+    }
+
+    .product-cat {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .price-old {
+      color: var(--text-secondary);
+      text-decoration: line-through;
+      font-weight: 400;
+      font-size: 13px;
+    }
+
+    .price-off {
+      color: var(--accent-green);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .product-select-btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 9px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid #d4d4d4;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--bg-white);
+      transition: all var(--transition);
+    }
+
+    .product-select-btn:hover {
+      background: var(--text-primary);
+      color: var(--bg-white);
+      border-color: var(--text-primary);
+    }
+
+    /* Shop by Style Cards */
+    .style-card {
+      flex: 0 0 280px;
+      height: 350px;
+      position: relative;
+      overflow: hidden;
+      scroll-snap-align: start;
+      cursor: pointer;
+    }
+
+    .style-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .style-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .style-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: var(--bg-white);
+      color: var(--text-primary);
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Spotlight Banner */
+    .spotlight-banner {
+      margin-top: 24px;
+      background: #111111;
+      color: var(--bg-white);
+      padding: 72px 36px;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .spotlight-banner h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .spotlight-banner p {
+      max-width: 580px;
+      margin: 0 auto 24px;
+      color: #cccccc;
+      font-size: 15px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-light);
+      margin-top: 64px;
+      padding: 56px 36px 36px;
+      background: var(--bg-white);
+    }
+
+    .footer-inner {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-light);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Drawers & Modals */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      background: var(--bg-white);
+      z-index: 1010;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-header h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+    }
+
+    .drawer-footer {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border-light);
+      background: #fafafa;
+    }
+
+    .bag-item {
+      display: flex;
+      gap: 14px;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .bag-item img {
+      width: 84px;
+      height: 104px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: var(--bg-card);
+    }
+
+    .bag-item-info {
+      flex: 1;
+    }
+
+    .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid #cccccc;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .promo-input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .promo-input-row input {
+      flex: 1;
+      height: 40px;
+      border: 1px solid #cccccc;
+      border-radius: 8px;
+      padding: 0 12px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .summary-total {
+      font-weight: 700;
+      font-size: 16px;
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* Quick View & Checkout Modal */
+    .modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -46%) scale(0.96);
+      width: 92%;
+      max-width: 780px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: var(--bg-white);
+      border-radius: 16px;
+      z-index: 1020;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+    }
+
+    .modal.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .qv-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .qv-img {
+      background: var(--bg-card);
+      min-height: 420px;
+    }
+
+    .qv-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .qv-details {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .size-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 12px 0 22px;
+    }
+
+    .size-btn {
+      padding: 11px 0;
+      border: 1px solid #d4d4d4;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+
+    .size-btn:hover {
+      border-color: var(--text-primary);
+    }
+
+    .size-btn.selected {
+      border-color: var(--text-primary);
+      background: var(--text-primary);
+      color: var(--bg-white);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(90px);
+      background: var(--text-primary);
+      color: var(--bg-white);
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 1200;
+      transition: transform 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Mobile Drawer Menu */
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .top-bar {
+        display: none;
+      }
+      .navbar {
+        padding: 0 16px;
+      }
+      .search-box {
+        display: none;
+      }
+      .section {
+        padding: 40px 16px 16px;
+      }
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+      .editorial-card {
+        height: 400px;
+      }
+      .trending-card {
+        flex: 0 0 280px;
+      }
+      .trending-img-wrap {
+        height: 340px;
+      }
+      .qv-layout {
+        grid-template-columns: 1fr;
+      }
+      .qv-img {
+        min-height: 260px;
+        max-height: 300px;
+      }
+      .hero-controls {
+        right: 16px;
+      }
+      footer {
+        padding: 40px 16px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span>J.S &nbsp;|&nbsp; JANSHAI INDIA</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#catalog">Find a Store</a>
+      <span class="top-bar-divider">|</span>
+      <a href="#footer">Help</a>
+      <span class="top-bar-divider">|</span>
+      <a href="#spotlight">Join JANSHAI Club</a>
+      <span class="top-bar-divider">|</span>
+      <a href="javascript:void(0)" onclick="showToast('Demo Account: Signed in as Guest')">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Main Sticky Navigation -->
+  <header class="navbar" id="navbar">
+    <a href="#" class="brand-logo" aria-label="JANSHAI Home">
+      <span class="brand-logo-mark">J.S</span>
+      <span class="brand-logo-text">JANSHAI</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#featured">New &amp; Featured</a></li>
+      <li><a href="#catalog" onclick="filterProducts('Men')">Men</a></li>
+      <li><a href="#catalog" onclick="filterProducts('Women')">Women</a></li>
+      <li><a href="#catalog" onclick="filterProducts('Outerwear')">Outerwear</a></li>
+      <li><a href="#trending">Drops</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search JANSHAI..." autocomplete="off" />
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+
+      <button class="icon-btn" aria-label="Favourites" onclick="openDrawer('favDrawer')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+        <span class="badge-count hidden" id="favCount">0</span>
+      </button>
+
+      <button class="icon-btn" aria-label="Shopping Bag" onclick="openDrawer('bagDrawer')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+          <path d="M6 7h12l1 13H5L6 7z"></path>
+          <path d="M9 7V5a3 3 0 0 1 6 0v2"></path>
+        </svg>
+        <span class="badge-count hidden" id="bagCount">0</span>
+      </button>
+
+      <button class="icon-btn hamburger" aria-label="Menu" onclick="openDrawer('mobileMenuDrawer')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Promo Strip -->
+  <div class="promo-strip">
+    <span><strong>Enjoy 15% Off On Your First Order.</strong> Use Code: <strong>JS15</strong> at checkout.</span>
+    <button onclick="copyPromo()">Copy Code</button>
+  </div>
+
+  <!-- Full-Bleed Hero Campaign Slider -->
+  <section class="hero-section" aria-label="Featured Campaigns">
+    <div class="hero-slide active">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=80" alt="JANSHAI Winter Streetwear Drop" />
+      <div class="hero-overlay">
+        <div class="hero-kicker">JANSHAI • DROP 01</div>
+        <h1 class="hero-title">OWN THE STREET.</h1>
+        <p class="hero-subtitle">Heavyweight silhouettes and engineered cotton built for everyday movement. Designed in India by J.S.</p>
+        <div class="hero-ctas">
+          <a href="#catalog" class="btn-pill btn-white">Shop Collection</a>
+          <a href="#trending" class="btn-pill btn-outline-white">Explore Lookbook</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1600&q=80" alt="JANSHAI Men's Outerwear" />
+      <div class="hero-overlay">
+        <div class="hero-kicker">WINTER ESSENTIALS '26</div>
+        <h1 class="hero-title">NEVER MISS A LAYER.</h1>
+        <p class="hero-subtitle">Structured bombers, fleece hoodies, and relaxed cargos crafted for crisp city nights.</p>
+        <div class="hero-ctas">
+          <a href="#catalog" onclick="filterProducts('Outerwear')" class="btn-pill btn-white">Shop Outerwear</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=80" alt="JANSHAI Studio Minimal Collection" />
+      <div class="hero-overlay">
+        <div class="hero-kicker">J.S MONOCHROME STUDIO</div>
+        <h1 class="hero-title">PURE FORM. ZERO NOISE.</h1>
+        <p class="hero-subtitle">Minimalist tailoring meets relaxed street proportions for effortless all-day wear.</p>
+        <div class="hero-ctas">
+          <a href="#catalog" onclick="filterProducts('Women')" class="btn-pill btn-white">Shop Women</a>
+          <a href="#catalog" onclick="filterProducts('Men')" class="btn-pill btn-outline-white">Shop Men</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-dots" id="heroDots">
+      <button class="hero-dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+      <button class="hero-dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+      <button class="hero-dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="hero-controls">
+      <button class="hero-ctrl-btn" onclick="prevSlide()" aria-label="Previous slide">&#8249;</button>
+      <button class="hero-ctrl-btn" id="pauseBtn" onclick="toggleAutoplay()" aria-label="Pause slider">&#10074;&#10074;</button>
+      <button class="hero-ctrl-btn" onclick="nextSlide()" aria-label="Next slide">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- 2x2 Featured Editorial Grid -->
+  <section class="section" id="featured">
+    <div class="section-header">
+      <h2 class="section-title">Featured</h2>
+    </div>
+    <div class="featured-grid">
+      <div class="editorial-card" onclick="jumpToFilter('Outerwear')">
+        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1000&q=80" alt="Winter Outerwear" />
+        <div class="editorial-overlay">
+          <span class="editorial-tag">J.S Winter Drop</span>
+          <h3 class="editorial-heading">Heavyweight Hoodies &amp; Jackets</h3>
+          <div><span class="btn-pill btn-white">Shop</span></div>
+        </div>
+      </div>
+
+      <div class="editorial-card" onclick="jumpToFilter('Women')">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=80" alt="Women's Streetwear" />
+        <div class="editorial-overlay">
+          <span class="editorial-tag">JANSHAI Women</span>
+          <h3 class="editorial-heading">Tailored Streetwear Classics</h3>
+          <div><span class="btn-pill btn-white">Shop</span></div>
+        </div>
+      </div>
+
+      <div class="editorial-card" onclick="jumpToFilter('Men')">
+        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1000&q=80" alt="Men's Core Essentials" />
+        <div class="editorial-overlay">
+          <span class="editorial-tag">24.7 Core Line</span>
+          <h3 class="editorial-heading">Oversized Tees &amp; Relaxed Denim</h3>
+          <div><span class="btn-pill btn-white">Shop</span></div>
+        </div>
+      </div>
+
+      <div class="editorial-card" onclick="jumpToFilter('Essentials')">
+        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=1000&q=80" alt="Everyday Fleece" />
+        <div class="editorial-overlay">
+          <span class="editorial-tag">Soft-Touch Cotton</span>
+          <h3 class="editorial-heading">Everyday Monochrome Essentials</h3>
+          <div><span class="btn-pill btn-white">Shop</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending Lookbook Carousel -->
+  <section class="section" id="trending">
+    <div class="section-header">
+      <h2 class="section-title">Trending Now</h2>
+      <div class="carousel-nav">
+        <button class="circle-arrow" onclick="scrollTrack('trendingTrack', -380)" aria-label="Scroll left">&#8249;</button>
+        <button class="circle-arrow" onclick="scrollTrack('trendingTrack', 380)" aria-label="Scroll right">&#8250;</button>
+      </div>
+    </div>
+    <div class="h-scroll" id="trendingTrack">
+      <div class="trending-card" onclick="openQuickView(1)">
+        <div class="trending-img-wrap">
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80" alt="Obsidian Fleece Hoodie" />
+        </div>
+        <div class="trending-title">J.S Obsidian Heavy Hoodie</div>
+        <div class="trending-sub">420 GSM French Terry • Best Seller</div>
+      </div>
+
+      <div class="trending-card" onclick="openQuickView(3)">
+        <div class="trending-img-wrap">
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80" alt="Utility Bomber Jacket" />
+        </div>
+        <div class="trending-title">JANSHAI Utility Bomber</div>
+        <div class="trending-sub">Weather-Resistant Shell • Men</div>
+      </div>
+
+      <div class="trending-card" onclick="openQuickView(4)">
+        <div class="trending-img-wrap">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Structured Trench" />
+        </div>
+        <div class="trending-title">Studio Belted Trench</div>
+        <div class="trending-sub">Monochrome Edit • Women</div>
+      </div>
+
+      <div class="trending-card" onclick="openQuickView(5)">
+        <div class="trending-img-wrap">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80" alt="Boxy Core Tee" />
+        </div>
+        <div class="trending-title">J.S Boxy Core T-Shirt</div>
+        <div class="trending-sub">Combed Organic Cotton • Unisex</div>
+      </div>
+
+      <div class="trending-card" onclick="openQuickView(7)">
+        <div class="trending-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80" alt="Relaxed Cargo Trousers" />
+        </div>
+        <div class="trending-title">Club Woven Cargo Trousers</div>
+        <div class="trending-sub">Multi-Pocket Utility • Men</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shoppable Catalog (INR Pricing) -->
+  <section class="section" id="catalog">
+    <div class="section-header">
+      <h2 class="section-title">Shop JANSHAI Essentials</h2>
+      <div class="filter-pills" id="filterPills">
+        <button class="filter-pill active" onclick="filterProducts('All')">All</button>
+        <button class="filter-pill" onclick="filterProducts('Men')">Men</button>
+        <button class="filter-pill" onclick="filterProducts('Women')">Women</button>
+        <button class="filter-pill" onclick="filterProducts('Outerwear')">Outerwear</button>
+        <button class="filter-pill" onclick="filterProducts('Essentials')">Essentials</button>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <!-- Shop by Style -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Shop by Style</h2>
+      <div class="carousel-nav">
+        <button class="circle-arrow" onclick="scrollTrack('styleTrack', -300)" aria-label="Scroll left">&#8249;</button>
+        <button class="circle-arrow" onclick="scrollTrack('styleTrack', 300)" aria-label="Scroll right">&#8250;</button>
+      </div>
+    </div>
+    <div class="h-scroll" id="styleTrack">
+      <div class="style-card" onclick="jumpToFilter('All')">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80" alt="Streetwear" />
+        <span class="style-label">Streetwear</span>
+      </div>
+      <div class="style-card" onclick="jumpToFilter('Outerwear')">
+        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=80" alt="Outerwear" />
+        <span class="style-label">Outerwear</span>
+      </div>
+      <div class="style-card" onclick="jumpToFilter('Essentials')">
+        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=80" alt="Minimal" />
+        <span class="style-label">Minimal Core</span>
+      </div>
+      <div class="style-card" onclick="jumpToFilter('Women')">
+        <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=700&q=80" alt="Studio Edit" />
+        <span class="style-label">Studio Edit</span>
+      </div>
+      <div class="style-card" onclick="jumpToFilter('Men')">
+        <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=700&q=80" alt="Everyday Casual" />
+        <span class="style-label">Everyday Casual</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Spotlight -->
+  <section class="section" id="spotlight">
+    <div class="spotlight-banner">
+      <h2>J.S — JANSHAI CLUB</h2>
+      <p>Unlock early access to limited-edition drops, complimentary express shipping across India, and member-only seasonal previews.</p>
+      <button class="btn-pill btn-white" onclick="showToast('Welcome to JANSHAI Club! Use code JS15 for 15% off.')">Join For Free</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#catalog">Find a Store</a></li>
+            <li><a href="#spotlight">Become a Member</a></li>
+            <li><a href="javascript:void(0)" onclick="copyPromo()">Promo Code: JS15</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('Size guide available inside each product view.')">Size Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="showToast('Order Tracking: Demo Mode Active')">Order Status</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('Free Pan-India delivery on orders above ₹4,999')">Delivery &amp; Shipping</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('Easy 14-day returns on unworn items')">Returns &amp; Exchanges</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('Contact: support@janshai.demo')">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#spotlight">About JANSHAI (J.S)</a></li>
+            <li><a href="#trending">Lookbook</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('100% ethically sourced cotton fabrics')">Sustainability</a></li>
+            <li><a href="javascript:void(0)" onclick="showToast('Careers opening soon!')">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>JANSHAI India</h4>
+          <ul>
+            <li><a href="javascript:void(0)">Instagram • @janshai.official</a></li>
+            <li><a href="javascript:void(0)">YouTube • J.S Studio</a></li>
+            <li><a href="javascript:void(0)">PAN-India Express Shipping</a></li>
+            <li><a href="javascript:void(0)">INR (₹) • India</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 JANSHAI (J.S) Apparel. All rights reserved. (Interactive Client Demo)</div>
+        <div class="footer-legal">
+          <a href="javascript:void(0)">Terms of Sale</a>
+          <a href="javascript:void(0)">Terms of Use</a>
+          <a href="javascript:void(0)">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Backdrop -->
+  <div class="backdrop" id="backdrop" onclick="closeAllOverlays()"></div>
+
+  <!-- Shopping Bag Drawer -->
+  <aside class="drawer" id="bagDrawer" aria-label="Shopping Bag">
+    <div class="drawer-header">
+      <h3>Your Bag (<span id="bagDrawerCount">0</span>)</h3>
+      <button class="icon-btn" onclick="closeAllOverlays()" aria-label="Close">&times;</button>
+    </div>
+    <div class="drawer-body" id="bagItemsContainer"></div>
+    <div class="drawer-footer">
+      <div class="promo-input-row">
+        <input type="text" id="promoInput" placeholder="Promo code (Try JS15)" />
+        <button class="btn-pill btn-dark" style="padding: 8px 18px; font-size: 13px;" onclick="applyPromo()">Apply</button>
+      </div>
+      <div class="summary-line"><span>Subtotal</span><span id="bagSubtotal">₹0</span></div>
+      <div class="summary-line" id="discountRow" style="display: none; color: var(--accent-green);">
+        <span>Promo (JS15 - 15%)</span><span id="bagDiscount">-₹0</span>
+      </div>
+      <div class="summary-line"><span>Estimated Delivery</span><span id="bagShipping">Free</span></div>
+      <div class="summary-line summary-total"><span>Total</span><span id="bagTotal">₹0</span></div>
+      <button class="btn-pill btn-dark" style="width: 100%; margin-top: 14px;" onclick="openCheckout()">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Favourites Drawer -->
+  <aside class="drawer" id="favDrawer" aria-label="Favourites">
+    <div class="drawer-header">
+      <h3>Favourites (<span id="favDrawerCount">0</span>)</h3>
+      <button class="icon-btn" onclick="closeAllOverlays()" aria-label="Close">&times;</button>
+    </div>
+    <div class="drawer-body" id="favItemsContainer"></div>
+  </aside>
+
+  <!-- Mobile Navigation Drawer -->
+  <aside class="drawer" id="mobileMenuDrawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <h3>J.S — JANSHAI</h3>
+      <button class="icon-btn" onclick="closeAllOverlays()" aria-label="Close">&times;</button>
+    </div>
+    <div class="drawer-body">
+      <div class="mobile-menu-links">
+        <a href="#featured" onclick="closeAllOverlays()">New &amp; Featured</a>
+        <a href="#catalog" onclick="jumpToFilter('Men'); closeAllOverlays()">Men</a>
+        <a href="#catalog" onclick="jumpToFilter('Women'); closeAllOverlays()">Women</a>
+        <a href="#catalog" onclick="jumpToFilter('Outerwear'); closeAllOverlays()">Outerwear</a>
+        <a href="#catalog" onclick="jumpToFilter('Essentials'); closeAllOverlays()">Essentials</a>
+        <a href="#trending" onclick="closeAllOverlays()">Drops</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal" id="quickViewModal" role="dialog" aria-modal="true">
+    <div class="qv-layout" id="quickViewContent"></div>
+  </div>
+
+  <!-- Demo Checkout Modal -->
+  <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" style="max-width: 480px; padding: 32px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+      <h3 style="font-size: 20px;">Demo Checkout</h3>
+      <button class="icon-btn" onclick="closeAllOverlays()">&times;</button>
+    </div>
+    <form id="checkoutForm" onsubmit="completeDemoOrder(event)" style="display: flex; flex-direction: column; gap: 12px;">
+      <input type="text" required placeholder="Full Name" style="padding: 12px; border: 1px solid #d4d4d4; border-radius: 8px;" />
+      <input type="email" required placeholder="Email Address" style="padding: 12px; border: 1px solid #d4d4d4; border-radius: 8px;" />
+      <input type="text" required placeholder="Delivery Address &amp; City (India)" style="padding: 12px; border: 1px solid #d4d4d4; border-radius: 8px;" />
+      <div style="background: var(--bg-light); padding: 12px 14px; border-radius: 8px; font-size: 13px; color: var(--text-secondary);">
+        Order Total: <strong style="color: var(--text-primary);" id="checkoutTotalDisplay">₹0</strong> (Demo Mode — No real payment charged)
+      </div>
+      <button type="submit" class="btn-pill btn-dark" style="width: 100%; margin-top: 6px;">Place Demo Order</button>
+    </form>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const PRODUCTS = [
+      {
+        id: 1,
+        name: "J.S Obsidian Heavyweight Hoodie",
+        category: "Outerwear",
+        gender: "Men",
+        price: 3495,
+        mrp: 4495,
+        rating: 4.9,
+        reviews: 128,
+        badge: "BEST SELLER",
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        desc: "Crafted from 420 GSM brushed French terry cotton with a boxy drop-shoulder silhouette and double-lined hood.",
+        img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 2,
+        name: "JANSHAI Shrunken Track Jacket",
+        category: "Outerwear",
+        gender: "Women",
+        price: 3995,
+        mrp: 3995,
+        rating: 4.8,
+        reviews: 74,
+        badge: "NEW IN",
+        sizes: ["XS", "S", "M", "L", "XL"],
+        desc: "Cropped monochrome woven track jacket with crisp contrast piping and breathable mesh lining.",
+        img: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 3,
+        name: "J.S Utility Woven Bomber Jacket",
+        category: "Outerwear",
+        gender: "Men",
+        price: 5495,
+        mrp: 6995,
+        rating: 4.9,
+        reviews: 92,
+        badge: "21% OFF",
+        sizes: ["S", "M", "L", "XL"],
+        desc: "Water-repellent matte nylon shell with articulated sleeves, ribbed cuffs, and concealed zip pockets.",
+        img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 4,
+        name: "JANSHAI Studio Belted Trench",
+        category: "Outerwear",
+        gender: "Women",
+        price: 6295,
+        mrp: 6295,
+        rating: 4.7,
+        reviews: 51,
+        badge: "LIMITED",
+        sizes: ["XS", "S", "M", "L"],
+        desc: "Fluid minimalist trench tailored with an oversized storm flap and removable waist tie for clean layering.",
+        img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 5,
+        name: "J.S Boxy Core Heavy T-Shirt",
+        category: "Essentials",
+        gender: "Men",
+        price: 1495,
+        mrp: 1995,
+        rating: 4.8,
+        reviews: 215,
+        badge: "25% OFF",
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        desc: "260 GSM combed organic cotton jersey with a high-ribbed collar that holds its shape wash after wash.",
+        img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 6,
+        name: "JANSHAI Soft-Touch Half-Zip Pullover",
+        category: "Essentials",
+        gender: "Women",
+        price: 2995,
+        mrp: 2995,
+        rating: 4.9,
+        reviews: 89,
+        badge: "NEW IN",
+        sizes: ["XS", "S", "M", "L", "XL"],
+        desc: "Ultra-soft modal-cotton blend half-zip engineered for effortless studio-to-street comfort.",
+        img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 7,
+        name: "J.S Club Woven Cargo Trousers",
+        category: "Essentials",
+        gender: "Men",
+        price: 2795,
+        mrp: 3995,
+        rating: 4.7,
+        reviews: 143,
+        badge: "30% OFF",
+        sizes: ["28", "30", "32", "34", "36"],
+        desc: "Relaxed straight-leg woven ripstop cargos featuring bellows utility pockets and adjustable hem toggles.",
+        img: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 8,
+        name: "JANSHAI Open-Hem Studio Trousers",
+        category: "Essentials",
+        gender: "Women",
+        price: 2495,
+        mrp: 2495,
+        rating: 4.8,
+        reviews: 64,
+        badge: "CORE",
+        sizes: ["XS", "S", "M", "L", "XL"],
+        desc: "Mid-rise wide-leg fleece trousers with crisp pintuck front detailing and deep side seam pockets.",
+        img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+
+    let activeFilter = "All";
+    let bag = [];
+    let favourites = [];
+    let promoApplied = false;
+    let selectedSize = "";
+
+    // Hero Slider State
+    let currentSlide = 0;
+    let autoplay = true;
+    const slides = document.querySelectorAll(".hero-slide");
+    const dots = document.querySelectorAll(".hero-dot");
+    let slideTimer = setInterval(nextSlide, 5500);
+
+    function showSlide(idx) {
+      slides.forEach((s, i) => s.classList.toggle("active", i === idx));
+      dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+      currentSlide = idx;
+    }
+
+    function nextSlide() {
+      showSlide((currentSlide + 1) % slides.length);
+    }
+
+    function prevSlide() {
+      showSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+
+    function goToSlide(idx) {
+      showSlide(idx);
+    }
+
+    function toggleAutoplay() {
+      const btn = document.getElementById("pauseBtn");
+      if (autoplay) {
+        clearInterval(slideTimer);
+        autoplay = false;
+        btn.innerHTML = "&#9654;";
+      } else {
+        slideTimer = setInterval(nextSlide, 5500);
+        autoplay = true;
+        btn.innerHTML = "&#10074;&#10074;";
+      }
+    }
+
+    // Format INR
+    function formatINR(num) {
+      return "₹" + num.toLocaleString("en-IN");
+    }
+
+    // Render Products
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      const filtered = PRODUCTS.filter(p => {
+        if (activeFilter === "All") return true;
+        return p.gender === activeFilter || p.category === activeFilter;
+      });
+
+      grid.innerHTML = filtered.map(p => {
+        const isFav = favourites.includes(p.id);
+        const hasDiscount = p.mrp > p.price;
+        const pct = hasDiscount ? Math.round(((p.mrp - p.price) / p.mrp) * 100) : 0;
+        return `
+          <article class="product-card" onclick="openQuickView(${p.id})">
+            <div class="product-img-box">
+              <img src="${p.img}" alt="${p.name}" loading="lazy" />
+              <span class="product-badge ${hasDiscount ? 'sale' : ''}">${p.badge}</span>
+              <button class="fav-toggle ${isFav ? 'saved' : ''}" aria-label="Save to favourites" onclick="event.stopPropagation(); toggleFav(${p.id})">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-rating">&#9733; ${p.rating} <span>(${p.reviews})</span></div>
+            <div class="product-name">${p.name}</div>
+            <div class="product-cat">${p.gender}'s ${p.category} • ${p.sizes.length} sizes</div>
+            <div class="product-price-row">
+              <span>${formatINR(p.price)}</span>
+              ${hasDiscount ? `<span class="price-old">${formatINR(p.mrp)}</span><span class="price-off">${pct}% off</span>` : ""}
+            </div>
+            <button class="product-select-btn" onclick="event.stopPropagation(); openQuickView(${p.id})">Select Size</button>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function filterProducts(cat) {
+      activeFilter = cat;
+      document.querySelectorAll(".filter-pill").forEach(btn => {
+        btn.classList.toggle("active", btn.textContent.trim() === cat);
+      });
+      renderProducts();
+    }
+
+    function jumpToFilter(cat) {
+      filterProducts(cat);
+      document.getElementById("catalog").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Quick View Modal
+    function openQuickView(id) {
+      const p = PRODUCTS.find(x => x.id === id);
+      if (!p) return;
+      selectedSize = p.sizes[1] || p.sizes[0];
+      const hasDiscount = p.mrp > p.price;
+
+      document.getElementById("quickViewContent").innerHTML = `
+        <div class="qv-img"><img src="${p.img}" alt="${p.name}" /></div>
+        <div class="qv-details">
+          <div style="display:flex; justify-content:space-between; align-items:start;">
+            <div>
+              <div style="font-size:12px; font-weight:700; color:var(--text-secondary); letter-spacing:0.08em;">J.S • JANSHAI</div>
+              <h3 style="font-size:22px; margin-top:4px; line-height:1.2;">${p.name}</h3>
+            </div>
+            <button class="icon-btn" onclick="closeAllOverlays()" style="font-size:22px;">&times;</button>
+          </div>
+          <div style="color:var(--text-secondary); font-size:14px; margin:6px 0 12px;">${p.gender}'s ${p.category}</div>
+          <div class="product-price-row" style="font-size:18px; margin-bottom:14px;">
+            <span>${formatINR(p.price)}</span>
+            ${hasDiscount ? `<span class="price-old">${formatINR(p.mrp)}</span>` : ""}
+          </div>
+          <p style="font-size:14px; color:#444; margin-bottom:18px;">${p.desc}</p>
+          <div style="font-size:13px; font-weight:600;">Select Size</div>
+          <div class="size-grid" id="qvSizes">
+            ${p.sizes.map(s => `<button class="size-btn ${s === selectedSize ? 'selected' : ''}" onclick="chooseSize('${s}', this)">${s}</button>`).join("")}
+          </div>
+          <button class="btn-pill btn-dark" style="width:100%; margin-bottom:10px;" onclick="addToBag(${p.id})">Add to Bag</button>
+          <button class="btn-pill" style="width:100%; border:1px solid #ccc;" onclick="toggleFav(${p.id}); showToast('Updated Favourites')">
+            ${favourites.includes(p.id) ? "Saved in Favourites" : "Add to Favourites"}
+          </button>
+        </div>
+      `;
+
+      closeAllOverlays();
+      document.getElementById("backdrop").classList.add("open");
+      document.getElementById("quickViewModal").classList.add("open");
+    }
+
+    function chooseSize(size, el) {
+      selectedSize = size;
+      document.querySelectorAll("#qvSizes .size-btn").forEach(b => b.classList.remove("selected"));
+      el.classList.add("selected");
+    }
+
+    // Shopping Bag Logic
+    function addToBag(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      const existing = bag.find(item => item.id === productId && item.size === selectedSize);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        bag.push({ id: p.id, name: p.name, price: p.price, img: p.img, size: selectedSize, qty: 1 });
+      }
+      updateBagUI();
+      closeAllOverlays();
+      openDrawer("bagDrawer");
+      showToast(`Added ${p.name} (${selectedSize}) to Bag`);
+    }
+
+    function updateQty(idx, delta) {
+      bag[idx].qty += delta;
+      if (bag[idx].qty <= 0) bag.splice(idx, 1);
+      updateBagUI();
+    }
+
+    function updateBagUI() {
+      const count = bag.reduce((sum, i) => sum + i.qty, 0);
+      const badge = document.getElementById("bagCount");
+      badge.textContent = count;
+      badge.classList.toggle("hidden", count === 0);
+      document.getElementById("bagDrawerCount").textContent = count;
+
+      const container = document.getElementById("bagItemsContainer");
+      if (bag.length === 0) {
+        container.innerHTML = `<p style="color:var(--text-secondary); text-align:center; padding:48px 0;">Your JANSHAI bag is empty.</p>`;
+      } else {
+        container.innerHTML = bag.map((item, idx) => `
+          <div class="bag-item">
+            <img src="${item.img}" alt="${item.name}" />
+            <div class="bag-item-info">
+              <div style="font-weight:600; font-size:14px;">${item.name}</div>
+              <div style="font-size:13px; color:var(--text-secondary);">Size: ${item.size}</div>
+              <div style="font-weight:600; font-size:14px; margin-top:4px;">${formatINR(item.price * item.qty)}</div>
+              <div class="qty-row">
+                <button class="qty-btn" onclick="updateQty(${idx}, -1)">-</button>
+                <span style="font-size:14px; font-weight:600;">${item.qty}</span>
+                <button class="qty-btn" onclick="updateQty(${idx}, 1)">+</button>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      const subtotal = bag.reduce((sum, i) => sum + i.price * i.qty, 0);
+      const discount = promoApplied ? Math.round(subtotal * 0.15) : 0;
+      const shipping = subtotal > 0 && subtotal < 4999 ? 250 : 0;
+      const total = subtotal - discount + shipping;
+
+      document.getElementById("bagSubtotal").textContent = formatINR(subtotal);
+      document.getElementById("discountRow").style.display = promoApplied && subtotal > 0 ? "flex" : "none";
+      document.getElementById("bagDiscount").textContent = "-" + formatINR(discount);
+      document.getElementById("bagShipping").textContent = shipping === 0 ? "Free" : formatINR(shipping);
+      document.getElementById("bagTotal").textContent = formatINR(total);
+      document.getElementById("checkoutTotalDisplay").textContent = formatINR(total);
+    }
+
+    function applyPromo() {
+      const code = document.getElementById("promoInput").value.trim().toUpperCase();
+      if (code === "JS15") {
+        promoApplied = true;
+        updateBagUI();
+        showToast("Promo JS15 applied — 15% off!");
+      } else {
+        showToast("Invalid code. Try JS15 for 15% off.");
+      }
+    }
+
+    function copyPromo() {
+      if (navigator.clipboard) navigator.clipboard.writeText("JS15");
+      document.getElementById("promoInput").value = "JS15";
+      showToast("Promo code JS15 copied!");
+    }
+
+    // Favourites
+    function toggleFav(id) {
+      const idx = favourites.indexOf(id);
+      if (idx === -1) {
+        favourites.push(id);
+        showToast("Saved to Favourites");
+      } else {
+        favourites.splice(idx, 1);
+      }
+      renderProducts();
+      updateFavUI();
+    }
+
+    function updateFavUI() {
+      const badge = document.getElementById("favCount");
+      badge.textContent = favourites.length;
+      badge.classList.toggle("hidden", favourites.length === 0);
+      document.getElementById("favDrawerCount").textContent = favourites.length;
+
+      const container = document.getElementById("favItemsContainer");
+      if (favourites.length === 0) {
+        container.innerHTML = `<p style="color:var(--text-secondary); text-align:center; padding:48px 0;">No saved items yet. Tap the heart icon on any item.</p>`;
+      } else {
+        container.innerHTML = favourites.map(id => {
+          const p = PRODUCTS.find(x => x.id === id);
+          return `
+            <div class="bag-item">
+              <img src="${p.img}" alt="${p.name}" />
+              <div class="bag-item-info">
+                <div style="font-weight:600; font-size:14px;">${p.name}</div>
+                <div style="font-weight:600; font-size:14px; margin:4px 0 10px;">${formatINR(p.price)}</div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn-pill btn-dark" style="padding:6px 14px; font-size:12px;" onclick="openQuickView(${p.id})">Select Size</button>
+                  <button class="btn-pill" style="padding:6px 12px; font-size:12px; border:1px solid #ccc;" onclick="toggleFav(${p.id})">Remove</button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+
+    // Checkout Flow
+    function openCheckout() {
+      if (bag.length === 0) {
+        showToast("Add items to your bag first.");
+        return;
+      }
+      closeAllOverlays();
+      document.getElementById("backdrop").classList.add("open");
+      document.getElementById("checkoutModal").classList.add("open");
+    }
+
+    function completeDemoOrder(e) {
+      e.preventDefault();
+      bag = [];
+      promoApplied = false;
+      updateBagUI();
+      e.target.reset();
+      closeAllOverlays();
+      showToast("Demo Order Placed! Thank you for exploring JANSHAI.");
+    }
+
+    // Live Search
+    const searchInput = document.getElementById("searchInput");
+    const searchDropdown = document.getElementById("searchDropdown");
+    searchInput.addEventListener("input", () => {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) {
+        searchDropdown.classList.remove("open");
+        return;
+      }
+      const matches = PRODUCTS.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.gender.toLowerCase().includes(q)
+      );
+      searchDropdown.innerHTML = matches.length
+        ? matches.map(p => `
+            <div class="search-item" onclick="openQuickView(${p.id}); searchDropdown.classList.remove('open'); searchInput.value='';">
+              <img src="${p.img}" alt="${p.name}" />
+              <div>
+                <div style="font-size:13px; font-weight:600;">${p.name}</div>
+                <div style="font-size:12px; color:var(--text-secondary);">${formatINR(p.price)}</div>
+              </div>
+            </div>
+          `).join("")
+        : `<div style="padding:14px; font-size:13px; color:var(--text-secondary);">No items found for "${q}"</div>`;
+      searchDropdown.classList.add("open");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".search-box")) searchDropdown.classList.remove("open");
+    });
+
+    // Helpers
+    function openDrawer(id) {
+      closeAllOverlays();
+      document.getElementById("backdrop").classList.add("open");
+      document.getElementById(id).classList.add("open");
+    }
+
+    function closeAllOverlays() {
+      document.getElementById("backdrop").classList.remove("open");
+      document.querySelectorAll(".drawer, .modal").forEach(el => el.classList.remove("open"));
+    }
+
+    function scrollTrack(id, px) {
+      document.getElementById(id).scrollBy({ left: px, behavior: "smooth" });
+    }
+
+    let toastTimeout;
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => t.classList.remove("show"), 2800);
+    }
+
+    window.addEventListener("scroll", () => {
+      document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 10);
+    });
+
+    // Init
+    renderProducts();
+    updateBagUI();
+    updateFavUI();
+  </script>
+</body>
+</html>
